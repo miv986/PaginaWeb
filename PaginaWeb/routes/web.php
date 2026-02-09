@@ -40,6 +40,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/csrf-token', function () {
     return response()->json(['csrf_token' => csrf_token()]);
 });
+Route::get('/sanctum/csrf-cookie', function () {
+    return response('', 204);
+})->middleware('web');
 
 // ================= REDIRECCIÓN A ANGULAR =================
 Route::get('/redirect-to-angular', [WebAuthController::class, 'redirectToAngular'])->name('redirect.to.angular');
